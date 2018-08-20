@@ -1,0 +1,122 @@
+[
+  {
+    "InstanceCount": 1,
+    "EbsConfiguration": {
+      "EbsBlockDeviceConfigs": [
+        {
+          "VolumeSpecification": {
+            "SizeInGB": 100,
+            "VolumeType": "gp2"
+          },
+          "VolumesPerInstance": 1
+        }
+      ],
+      "EbsOptimized": true
+    },
+    "InstanceGroupType": "MASTER",
+    "InstanceType": "m4.large",
+    "Name": "Master_Instance_Group"
+  },
+  {
+    "InstanceCount": 1,
+    "EbsConfiguration": {
+      "EbsBlockDeviceConfigs": [
+        {
+          "VolumeSpecification": {
+            "SizeInGB": 10,
+            "VolumeType": "gp2"
+          },
+          "VolumesPerInstance": 1
+        }
+      ],
+      "EbsOptimized": true
+    },
+    "AutoScalingPolicy": {
+      "Constraints": {
+        "MinCapacity": 0,
+        "MaxCapacity": 3
+      },
+      "Rules": [
+        {
+          "Action": {
+            "SimpleScalingPolicyConfiguration": {
+              "ScalingAdjustment": 1,
+              "CoolDown": 180,
+              "AdjustmentType": "CHANGE_IN_CAPACITY"
+            }
+          },
+          "Description": "",
+          "Trigger": {
+            "CloudWatchAlarmDefinition": {
+              "MetricName": "IsIdle",
+              "ComparisonOperator": "LESS_THAN",
+              "Statistic": "AVERAGE",
+              "Period": 300,
+              "Dimensions": [
+                {
+                  "Value": "${emr.clusterId}",
+                  "Key": "JobFlowId"
+                }
+              ],
+              "EvaluationPeriods": 1,
+              "Unit": "NONE",
+              "Namespace": "AWS/ElasticMapReduce",
+              "Threshold": 1
+            }
+          },
+          "Name": "Add_Task_Node_Rule"
+        },
+        {
+          "Action": {
+            "SimpleScalingPolicyConfiguration": {
+              "ScalingAdjustment": -3,
+              "CoolDown": 180,
+              "AdjustmentType": "CHANGE_IN_CAPACITY"
+            }
+          },
+          "Description": "",
+          "Trigger": {
+            "CloudWatchAlarmDefinition": {
+              "MetricName": "IsIdle",
+              "ComparisonOperator": "GREATER_THAN_OR_EQUAL",
+              "Statistic": "AVERAGE",
+              "Period": 300,
+              "Dimensions": [
+                {
+                  "Value": "${emr.clusterId}",
+                  "Key": "JobFlowId"
+                }
+              ],
+              "EvaluationPeriods": 6,
+              "Unit": "NONE",
+              "Namespace": "AWS/ElasticMapReduce",
+              "Threshold": 1
+            }
+          },
+          "Name": "Remove_Task_Node_Rule"
+        }
+      ]
+    },
+    "InstanceGroupType": "TASK",
+    "InstanceType": "m4.large",
+    "Name": "Task_Instance_Group"
+  },
+  {
+    "InstanceCount": 1,
+    "EbsConfiguration": {
+      "EbsBlockDeviceConfigs": [
+        {
+          "VolumeSpecification": {
+            "SizeInGB": 100,
+            "VolumeType": "gp2"
+          },
+          "VolumesPerInstance": 1
+        }
+      ],
+      "EbsOptimized": true
+    },
+    "InstanceGroupType": "CORE",
+    "InstanceType": "m4.large",
+    "Name": "Core_Instance_Group"
+  }
+]

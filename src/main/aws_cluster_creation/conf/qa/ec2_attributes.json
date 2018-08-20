@@ -1,0 +1,8 @@
+{
+  "KeyName": "obi-jenkins",
+  "InstanceProfile": "EMR_EC2_DefaultRole",
+  "ServiceAccessSecurityGroup": "sg-99b62be0",
+  "SubnetId": "subnet-6cb05c34",
+  "EmrManagedSlaveSecurityGroup": "sg-a3b62bda",
+  "EmrManagedMasterSecurityGroup": "sg-a1b62bd8"
+}

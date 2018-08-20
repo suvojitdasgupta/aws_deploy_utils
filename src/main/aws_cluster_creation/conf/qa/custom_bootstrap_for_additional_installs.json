@@ -1,0 +1,18 @@
+[
+  {
+    "Path": "s3://obi-brr-hadoop-porting-qa/bootstrap/custom_bootstrap/custom_bootstrap_action_for_argus_jobi_install.sh",
+    "Name": "argus-jobi_install"
+  },
+  {
+    "Path": "s3://obi-brr-hadoop-porting-qa/bootstrap/custom_bootstrap/custom_bootstrap_action_for_kerberos_auth.sh",
+    "Name": "kerb_auth_install"
+  },
+  {
+    "Path": "s3://obi-brr-hadoop-porting-qa/bootstrap/custom_bootstrap/custom_bootstrap_action_for_python_related_install.sh",
+    "Name": "python3_install"
+  },
+  {
+    "Path": "s3://obi-brr-hadoop-porting-qa/bootstrap/custom_bootstrap/custom_bootstrap_action_for_pig_related_install.sh",
+    "Name": "pig_client_install"
+  }
+]

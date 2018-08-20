@@ -1,0 +1,8 @@
+{
+  "KeyName": "obi-master-us-east-1",
+  "InstanceProfile": "EMR_EC2_DefaultRole",
+  "ServiceAccessSecurityGroup": "sg-3170194b",
+  "SubnetId": "subnet-a8111af0",
+  "EmrManagedSlaveSecurityGroup": "sg-3070194a",
+  "EmrManagedMasterSecurityGroup": "sg-32701948"
+}

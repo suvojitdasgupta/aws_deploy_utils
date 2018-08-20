@@ -1,0 +1,54 @@
+[
+  {
+    "Classification": "emrfs-site",
+    "Properties": {
+      "fs.s3.consistent.retryPeriodSeconds": "10",
+      "fs.s3.consistent": "true",
+      "fs.s3.consistent.retryCount": "10",
+      "fs.s3.consistent.metadata.tableName": "EmrFSMetadata",
+      "fs.s3.enableServerSideEncryption": "true"
+    }
+  },
+  {
+    "Classification": "yarn-site",
+    "Properties": {
+      "yarn.app.mapreduce.am.labels": "CORE,TASK",
+      "yarn.log-aggregation.retain-seconds": "2678400",
+      "yarn.log-aggregation-enable": "true",
+      "yarn.resourcemanager.scheduler.class": "org.apache.hadoop.yarn.server.resourcemanager.scheduler.fair.FairScheduler",
+      "yarn.nodemanager.vmem-check-enabled": "false"
+    }
+  },
+  {
+    "Classification": "hdfs-site",
+    "Properties": {
+      "dfs.replication": "2",
+      "dfs.permissions.enabled": "true",
+      "dfs.namenode.acls.enabled": "true"
+    }
+  },
+  {
+    "Classification": "mapred-site",
+    "Properties": {
+      "mapreduce.map.memory.mb": "1440",
+      "mapreduce.reduce.memory.mb": "1440",
+      "yarn.app.mapreduce.am.resource.mb": "928",
+      "mapreduce.jobhistory.max-age-ms": "2678400000"
+    }
+  },
+  {
+    "Classification": "oozie-site",
+    "Properties": {
+      "oozie.service.AuthorizationService.security.enabled": "true",
+      "oozie.service.AuthorizationService.default.group.as.acl": "true",
+      "oozie.service.AuthorizationService.admin.groups": "hadoop,oozie,hue,mapred",
+      "oozie.service.HadoopAccessorService.supported.filesystems": "*"
+    }
+  },
+  {
+      "Classification": "pig-properties",
+      "Properties": {
+        "exectype": "mr"
+      }
+   }
+]

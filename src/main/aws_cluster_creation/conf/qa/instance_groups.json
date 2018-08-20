@@ -1,0 +1,38 @@
+[
+  {
+    "InstanceCount": 1,
+    "EbsConfiguration": {
+      "EbsBlockDeviceConfigs": [
+        {
+          "VolumeSpecification": {
+            "SizeInGB": 400,
+            "VolumeType": "gp2"
+          },
+          "VolumesPerInstance": 1
+        }
+      ],
+      "EbsOptimized": true
+    },
+    "InstanceGroupType": "MASTER",
+    "InstanceType": "m4.2xlarge",
+    "Name": "Master_Instance_Group"
+  },
+  {
+    "InstanceCount": 2,
+    "EbsConfiguration": {
+      "EbsBlockDeviceConfigs": [
+        {
+          "VolumeSpecification": {
+            "SizeInGB": 400,
+            "VolumeType": "gp2"
+          },
+          "VolumesPerInstance": 1
+        }
+      ],
+      "EbsOptimized": true
+    },
+    "InstanceGroupType": "CORE",
+    "InstanceType": "m4.xlarge",
+    "Name": "Core_Instance_Group"
+  }
+]
